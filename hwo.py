@@ -85,7 +85,6 @@ def hwo(obj_func, dim, lb, ub, max_iter, pop_size=30):
                 minp = X3.copy()
                 minfit = obj_func(X3)
             minp1 = np.zeros(dim)
-            #minp1 = minp + (2 *np.random.random(dim) - 1) * F * (np.cos(t/max_iter * np.pi/2))
             minp1 = minp + np.random.normal(0,abs(F)*np.random.random()*np.cos(t/max_iter * np.pi/2))
             if obj_func(minp1) < minfit:
                 minp = minp1
@@ -97,7 +96,6 @@ def hwo(obj_func, dim, lb, ub, max_iter, pop_size=30):
             if fitness[i] < fit_pbest[i]:
                 pbest[i,:] = positions[i,:]
                 fit_pbest[i] = fitness[i]
-        #fitness = np.array([obj_func(p) for p in positions])
         
         sorted_idx = np.argsort(fitness)
         lbest = positions[sorted_idx[0],:].copy()
